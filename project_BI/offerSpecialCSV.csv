@@ -1,0 +1,17 @@
+SpecialOfferID;DiscountPct;Type;Category;MinQty;MaxQty
+1;0.0;No Discount                                       ;No Discount                                       ;0;100
+2;0.02;Volume Discount                                   ;Reseller                                          ;11;14
+3;0.05;Volume Discount                                   ;Reseller                                          ;15;24
+4;0.1;Volume Discount                                   ;Reseller                                          ;25;40
+5;0.15;Volume Discount                                   ;Reseller                                          ;41;60
+6;0.2;Volume Discount                                   ;Reseller                                          ;61;100
+7;0.35;Discontinued Product                              ;Reseller                                          ;0;100
+8;0.1;Seasonal Discount                                 ;Reseller                                          ;0;100
+9;0.3;Excess Inventory                                  ;Reseller                                          ;0;100
+10;0.5;Excess Inventory                                  ;Customer                                          ;0;100
+11;0.15;Seasonal Discount                                 ;Reseller                                          ;0;100
+12;0.35;Excess Inventory                                  ;Reseller                                          ;0;100
+13;0.15;New Product                                       ;Reseller                                          ;0;100
+14;0.2;New Product                                       ;Reseller                                          ;0;100
+15;0.5;Seasonal Discount                                 ;Customer                                          ;0;100
+16;0.4;Discontinued Product                              ;Reseller                                          ;0;100

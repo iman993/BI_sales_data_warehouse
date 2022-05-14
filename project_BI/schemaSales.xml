@@ -1,0 +1,108 @@
+<Schema name="sales_schema">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="offre_special">
+    <Hierarchy name="default" visible="true" hasAll="true">
+      <Table name="offre_special" alias="">
+      </Table>
+      <Level name="id_special" visible="true" table="offre_special" column="id_special_offre" uniqueMembers="false">
+      </Level>
+      <Level name="discontpct" visible="true" table="offre_special" column="discontpct" uniqueMembers="false">
+      </Level>
+      <Level name="type" visible="true" table="offre_special" column="type" uniqueMembers="false">
+      </Level>
+      <Level name="category" visible="true" table="offre_special" column="category" uniqueMembers="false">
+      </Level>
+      <Level name="max_qnt " visible="true" table="offre_special" column="max_qnt" uniqueMembers="false">
+      </Level>
+      <Level name="min_qnt" visible="true" table="offre_special" column="min_qnt" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="produit">
+    <Hierarchy name="default" visible="true" hasAll="true">
+      <Table name="produit" alias="">
+      </Table>
+      <Level name="id_produit" visible="true" table="produit" column="id_produit" uniqueMembers="false">
+      </Level>
+      <Level name="name" visible="true" table="produit" column="name" uniqueMembers="false">
+      </Level>
+      <Level name="class" visible="true" table="produit" column="class" uniqueMembers="false">
+      </Level>
+      <Level name="categorie " visible="true" table="produit" column="categorie" uniqueMembers="false">
+      </Level>
+      <Level name="model" visible="true" table="produit" column="model" uniqueMembers="false">
+      </Level>
+      <Level name="uit_price" visible="true" table="produit" column="uit_price" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="salesperson">
+    <Hierarchy name="default" visible="true" hasAll="true">
+      <Table name="sales_person" alias="">
+      </Table>
+      <Level name="id_salesperson" visible="true" table="sales_person" column="id_sales_person" uniqueMembers="false">
+      </Level>
+      <Level name="id_territory" visible="true" table="sales_person" column="id_territory" uniqueMembers="false">
+      </Level>
+      <Level name="sales_quota" visible="true" table="sales_person" column="sales_quota" uniqueMembers="false">
+      </Level>
+      <Level name="bonus" visible="true" table="sales_person" column="bonus" uniqueMembers="false">
+      </Level>
+      <Level name="sales_YTD" visible="true" table="sales_person" column="sales_YTD" uniqueMembers="false">
+      </Level>
+      <Level name="commissionTD " visible="true" table="sales_person" column="commissionTD" uniqueMembers="false">
+      </Level>
+      <Level name="sales_last_year" visible="true" table="sales_person" column="sales_last_year" uniqueMembers="false">
+      </Level>
+      <Level name="territoryPersonName" visible="true" table="sales_person" column="territoryPersonName" uniqueMembers="false">
+      </Level>
+      <Level name="groupTERPerson" visible="true" table="sales_person" column="groupTERPerson" uniqueMembers="false">
+      </Level>
+      <Level name="countryregionPerson" visible="true" table="sales_person" column="countryregionPerson" uniqueMembers="false">
+      </Level>
+      <Level name="salesLastYearTERPerson" visible="true" table="sales_person" column="salesLastYearTERPerson" uniqueMembers="false">
+      </Level>
+      <Level name="salesYTDTERPerson" visible="true" table="sales_person" column="salesYTDTERPerson" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="customer">
+    <Hierarchy name="default" visible="true" hasAll="true">
+      <Table name="customer" alias="">
+      </Table>
+      <Level name="id_customer" visible="true" table="customer" column="customerID" uniqueMembers="false">
+      </Level>
+      <Level name="id_territory" visible="true" table="customer" column="territoryID" uniqueMembers="false">
+      </Level>
+      <Level name="id_creditCard" visible="true" table="customer" column="creditCardID" uniqueMembers="false">
+      </Level>
+      <Level name="territoryName" visible="true" table="customer" column="territoryName" uniqueMembers="false">
+      </Level>
+      <Level name="groupTER" visible="true" table="customer" column="groupTER" uniqueMembers="false">
+      </Level>
+      <Level name="countryregion" visible="true" table="customer" column="countryregion" uniqueMembers="false">
+      </Level>
+      <Level name="salesLastYearTER" visible="true" table="customer" column="salesLastYearTER" uniqueMembers="false">
+      </Level>
+      <Level name="salesYTDTER" visible="true" table="customer" column="salesYTDTER" uniqueMembers="false">
+      </Level>
+      <Level name="CreditCardType" visible="true" table="customer" column="CreditCardType" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="cube_sales" visible="true" cache="false" enabled="true">
+    <Table name="salesfact" alias="">
+    </Table>
+    <DimensionUsage source="customer" name="customerID" visible="true" foreignKey="customerID">
+    </DimensionUsage>
+    <DimensionUsage source="offre_special" name="offreSpecialID" visible="true" foreignKey="offreSpecialID">
+    </DimensionUsage>
+    <DimensionUsage source="produit" name="produitID " visible="true" foreignKey="produitID">
+    </DimensionUsage>
+    <DimensionUsage source="salesperson" name="salesPersonID" visible="true" foreignKey="salesPersonID">
+    </DimensionUsage>
+    <Measure name="quantite" column="quantite" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="mantantTotal" column="mantantTotal" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
